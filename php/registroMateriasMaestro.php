@@ -177,6 +177,34 @@
           <input type="hidden" name = "codigo" value =" <?php echo $valor ?>"> 
           <br><br><br>
         </form>
+
+      <!--  Tabla de alumnos inscritos en los eventos  --> 
+
+      <?php $consulta = mysqli_query($conexion, ";"); ?>
+
+      <?php while($dato = mysqli_fetch_array($consulta)){ ?>
+        
+        <table class="container">
+                <thead>
+                  <th>Nombre del evento</th>
+                  <th>Código del evento</th>
+                  <th>Descripción del evento</th>
+                  <th>Código del docente encargado</th>
+                  <th>Fecha del evento (A/M/D)</th>
+                  <th>Hora del evento</th>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><?php echo $dato['nombre_evento'];?></td>
+                    <td><?php echo $dato['id_evento'];?></td>
+                    <td><?php echo $dato['descripcion'];?></td>
+                    <td><?php echo $dato['id_docente'];?></td>
+                    <td><?php echo $dato['fecha'];?></td>
+                    <td><?php echo $dato['hora'];?></td>
+                  </tr>
+                </tbody>
+              </table>
+              <?php } ?>
         
       </div><!--Div text  -->
     </div><!--Div home_content  -->

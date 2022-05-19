@@ -142,6 +142,7 @@
         <table class="container">
                 <thead>
                   <th>Nombre del evento</th>
+                  <th>Código del evento</th>
                   <th>Descripción del evento</th>
                   <th>Código del docente encargado</th>
                   <th>Fecha del evento (A/M/D)</th>
@@ -150,6 +151,7 @@
                 <tbody>
                   <tr>
                     <td><?php echo $dato['nombre_evento'];?></td>
+                    <td><?php echo $dato['id_evento'];?></td>
                     <td><?php echo $dato['descripcion'];?></td>
                     <td><?php echo $dato['id_docente'];?></td>
                     <td><?php echo $dato['fecha'];?></td>
@@ -158,6 +160,11 @@
                 </tbody>
               </table>
         <?php } ?>
+
+        <form action="registroEvento.php" method = "POST">
+          <label>Ingrese el código del evento</label> <br>
+          <input type="text" name="codigo" value = "" placeholder = "Código"> <br><br>
+          <input type="submit" value="Inscribir"> <br><br><br>
 
         <?php if(isset($_SESSION['mensaje'])){
           echo "<div>".$_SESSION['mensaje']."</div>";
