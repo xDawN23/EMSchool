@@ -24,4 +24,5 @@
 
     header("Location: registro.php");
 
+    echo "pito";
 ?>
