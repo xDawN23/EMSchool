@@ -1,6 +1,18 @@
 <?php
     require_once 'conexion.php';
     session_start();
+
+    //Valida que el usuario este logueado, además de que otros usuarios no puedan acceder a partes del sistema que no deberían poder acceder.
+
+    $codigo = $_SESSION['codigo'];
+    $query = mysqli_query($conexion, "SELECT * FROM persona WHERE codigo = '$codigo'"); 
+    $usuario = mysqli_fetch_assoc($query);
+
+    if($usuario['cargo'] != "admin"){
+      session_destroy();
+      header("Location: login.php");
+    }
+
 ?>
 <!DOCTYPE html><html class="menu">
 <html ng-app="EM-SCHOOL">

@@ -1,6 +1,18 @@
 <?php
     include_once 'conexion.php';
     session_start(); 
+
+    //Valida que el usuario este logueado, además de que otros usuarios no puedan acceder a partes del sistema que no deberían poder acceder.
+
+    $codigo = $_SESSION['codigo'];
+    $query = mysqli_query($conexion, "SELECT * FROM persona WHERE codigo = '$codigo'"); 
+    $usuario = mysqli_fetch_assoc($query);
+
+    if($usuario['cargo'] != "maestro"){
+      session_destroy();
+      header("Location: login.php");
+    }
+
 ?>
 <!DOCTYPE html><html class="menu">
 <html ng-app="EM-SCHOOL">
@@ -111,30 +123,32 @@
                 </tbody>
               </table>
 
-              <table class="container">
-                <caption>Horario</caption> 
-	<thead>
-		<tr>
-		<th></th>
-		<th>Lun</th>
-		<th>Mar</th>
-		<th>Mié</th>
-		<th>Jue</th>
-		<th>Vie</th>
-  </tr>
-  </thead>
-
-	<tbody>
-		<tr>
-		<td class="horas">8:30 a 9:25 </td>
-		<td class="Lengua">Lengua*<span> Aula</span></td>
-		<td class="Mates">Mates *<span> Aula</span></td>
-		<td class="Mates">Mates *<span> Aula </span></td>
-		<td class="Mates">Mates *<span> Aula </span> </td>
-	<td class="Edfisica">Educación física*<span> Gimnasio</span> </td>
-		</tr>
-	</tbody>
-	</table>
+    <?php 
+    $codigo = $_SESSION['codigo'];
+    $query = mysqli_query($conexion, "SELECT * FROM materia WHERE id_docente = '$codigo'"); 
+    ?>
+      <div id = "datos">
+        <h2>Horario del docente</h2>
+        <table class="container">
+          <thead>
+            <th>Código de la materia</th>
+            <th>Nombre de la materia</th>
+            <th>Horario de la clase</th>
+            <th>Aula</th>
+            <th>Grupo</th>
+          </thead>
+          <tbody>
+            <?php while($maestro = mysqli_fetch_assoc($query)){?>
+                  <tr>
+                    <td><?php echo $maestro['id_materia'];?></td>
+                    <td><?php echo $maestro['nombre_materia'];?></td>
+                    <td><?php echo $maestro['hora_inicio'];?> - <?php echo $maestro['hora_fin'];?></td>
+                    <td><?php echo $maestro['aula'];?></td>
+                    <td><?php echo $maestro['grupo'];?></td>
+                  </tr>
+                  <?php }?>
+                </tbody>
+              </table>
           </div>
         <div class="footer">
         <p> Todos los derechos reservados © 2021</p>

@@ -62,7 +62,7 @@
         if($errores == 0){
             $sql = "INSERT INTO materia (id_materia, id_docente, nombre_materia, hora_inicio, hora_fin, aula, grupo) VALUES ('$codigo', '$codigoMaestro', '$nombreMateria', '$horaInicio', '$horaFin', '$aula', '$grupo');";
             $guardar = mysqli_query($conexion, $sql);
-            $maestro = "UPDATE `maestro` SET `id_materia` = '$codigo' WHERE `maestro`.`id_docente` = '$codigoMaestro';";
+            $maestro = "INSERT INTO maestro (id_materia, id_docente, codigo, evento_creado) VALUES ('$codigo', '$codigoMaestro', '$codigoMaestro', '0');";
             $guardar2 = mysqli_query($conexion, $maestro);
             if ($guardar && $guardar2) {
                 $_SESSION['mensaje'] = "<script>alert('Servicio registrado exitosamente.');</script>"; header('Location: serviciosAdmin.php');

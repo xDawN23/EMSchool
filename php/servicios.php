@@ -1,6 +1,18 @@
 <?php
     require_once 'conexion.php';
     session_start();
+
+    //Valida que el usuario este logueado, además de que otros usuarios no puedan acceder a partes del sistema que no deberían poder acceder.
+
+    $codigo = $_SESSION['codigo'];
+    $query = mysqli_query($conexion, "SELECT * FROM persona WHERE codigo = '$codigo'"); 
+    $usuario = mysqli_fetch_assoc($query);
+
+    if($usuario['cargo'] != "alumno"){
+      session_destroy();
+      header("Location: login.php");
+    }
+
 ?>
 <!DOCTYPE html><html class="menu">
 <html ng-app="EM-SCHOOL">
@@ -76,18 +88,22 @@
           </a>
           <span class="tooltip">Configuración</span>
         </li>
-        <li>
-          <a href="prestamos.php">
-            <i class='bx bx-music'></i>
-            <span class="links_name">Préstamos</span>
-          </a>
-          <span class="tooltip">Préstamos</span>
+        <?php 
+          if($_SESSION['cargo'] == 'admin'){ ?> 
+          <li>
+            <a href="configuracion.php">
+              <i class='bx bx-cog' ></i>
+              <span class="links_name">Configuración</span>
+            </a>
+          <span class="tooltip">Configuración</span>
         </li>
+          <?php } ?>
+        
+        ?>
       </ul>
       <div class="profile_content">
         <div class="profile">
           <div class="profile_details">
-            <!--<img src="profile.jpg" alt="">-->
             <div class="name_job">
               <div class="name">Prem Shahi</div>
               <div class="job">Web Designer</div>

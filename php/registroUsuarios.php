@@ -112,7 +112,7 @@ if(isset($_POST)){
         $guardar_usuario = true;
         $contrasena_segura = password_hash($contrasena, PASSWORD_BCRYPT, ['cost' => 4]);
         //<!--codigo, nombre, apellido,  telefono, correo, genero, contrasena, tipo_sangre, cargo, estatus-->
-        $sql = "INSERT INTO persona (`codigo`, `nombre`, `apellido`, `telefono`, `correo`, `genero`, `contrasena`, `tipo_sangre`, `cargo`, `estatus`) VALUES ('$codigo', '$nombre', '$apellido', '$telefono', '$correo', '$genero', '$contrasena_segura', '$tipo_sangre', '$cargo', '$estatus');";
+        $sql = "INSERT INTO persona (`codigo`, `nombre`, `apellido`, `telefono`, `correo`, `genero`, `contrasena`, `tipo_sangre`, `cargo`, `estatus`) VALUES ('$codigo', '$nombre', '$apellido', '$telefono', '$correo', '$genero', '$contrasena', '$tipo_sangre', '$cargo', '$estatus');";
 
         $guardar = mysqli_query($conexion, $sql);
 

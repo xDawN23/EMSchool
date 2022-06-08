@@ -1,6 +1,18 @@
 <?php
     require_once 'conexion.php';
     session_start();
+
+    //Valida que el usuario este logueado, además de que otros usuarios no puedan acceder a partes del sistema que no deberían poder acceder.
+
+    $codigo = $_SESSION['codigo'];
+    $query = mysqli_query($conexion, "SELECT * FROM persona WHERE codigo = '$codigo'"); 
+    $usuario = mysqli_fetch_assoc($query);
+
+    if($usuario['cargo'] != "alumno"){
+      session_destroy();
+      header("Location: login.php");
+    }
+
 ?>
 <!DOCTYPE html><html class="menu">
 <html ng-app="EM-SCHOOL">
@@ -150,24 +162,24 @@
     </div>
   
     <script>
-     let btn = document.querySelector("#btn");
-     let sidebar = document.querySelector(".sidebar");
-     let searchBtn = document.querySelector(".bx-search");
+    let btn = document.querySelector("#btn");
+    let sidebar = document.querySelector(".sidebar");
+    let searchBtn = document.querySelector(".bx-search");
   
-     btn.onclick = function() {
-       sidebar.classList.toggle("active");
-       if(btn.classList.contains("bx-menu")){
-         btn.classList.replace("bx-menu" , "bx-menu-alt-right");
-       }else{
-         btn.classList.replace("bx-menu-alt-right", "bx-menu");
-       }
-     }
-     searchBtn.onclick = function() {
-       sidebar.classList.toggle("active");
-     }
+    btn.onclick = function() {
+      sidebar.classList.toggle("active");
+      if(btn.classList.contains("bx-menu")){
+        btn.classList.replace("bx-menu" , "bx-menu-alt-right");
+      }else{
+        btn.classList.replace("bx-menu-alt-right", "bx-menu");
+      }
+    }
+    searchBtn.onclick = function() {
+      sidebar.classList.toggle("active");
+    }
     </script>
-   
-   <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
-     <script type="text/javascript" src="../js/inicioAlumno.js"></script>
+
+  <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="../js/inicioAlumno.js"></script>
 </body>
 </html>
