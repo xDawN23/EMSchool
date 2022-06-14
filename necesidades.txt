@@ -1,14 +1,5 @@
-Necesidades para la segunda entrega:
--Login. HECHO
--Conexión a la DB.  HECHO
--Consulta de datos. HECHO
--Calificaciones (solo cuadro sin calificaciones).
--Solicitud de instrumentos (solo vista de los instrumentos disponibles). A medias 
--Horarios para alumnos. "Preguntarle al carlitos que onda"
--Ver lista de alumos asociada a una clase. (maestros)
--Dar de alta alumnos. (administrativos)
-
 Necesidades para tercera entrega:
--Sistema de pagos.
--Permisos para subir calificaciones (solo administrativos).
--Acabar el apartado de calificaciones.
+-Ver qué hacer con el apartado de pagos para alumnos.
+-Configuración de maestro.
+-
+-
