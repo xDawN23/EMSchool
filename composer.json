@@ -18,8 +18,4 @@
         "phpunit/phpunit": "4.3.*",
         "maximebf/debugbar": ">=1.0.0"
     }
-    "post-install-cmd": [
-     "php artisan clear-compiled",
-     "chmod -R 777 public/"
- ]
 }
