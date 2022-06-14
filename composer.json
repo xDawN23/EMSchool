@@ -1,5 +1,5 @@
-{
-  "require": {
-    "silex/silex": "~1.1",
-  }
+"require": {
+	"respect/validation": "0.6.*",
+	"phpunit/phpunit": ">=4.0",
+	"tinymce/tinymce": "dev-master"
 }
