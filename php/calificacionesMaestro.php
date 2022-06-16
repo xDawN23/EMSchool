@@ -97,13 +97,12 @@
     <!--***************************************************************************************  -->
     <div class="home_content"> 
         <div class="text">
+        
         <?php 
         $valor = $_SESSION['codigo'];
         //Obtenemos el codigo el maestro, para asi obtener los codigos de las materias a las que estan asociadas por el codigo.
-        $query = mysqli_query($conexion, "SELECT id_materia FROM `maestro` WHERE codigo = '$valor'"); 
-        $usuario = mysqli_fetch_assoc($query);
-        $codigo = $usuario['id_materia'];
-        $datos = mysqli_query($conexion, "SELECT * FROM `calificacion` WHERE id_materia = '$codigo'");
+        //SELECT cal.id_materia, m.id_materia FROM calificacion cal INNER JOIN maestro m ON cal.id_materia = m.id_materia WHERE m.id_docente = '$valor'
+        $datos = mysqli_query($conexion, "SELECT * FROM `calificacion` WHERE id_docente = $valor ORDER BY id_materia ASC");
         //$arreglo = mysqli_fetch_assoc($datos);
         //echo($arreglo);
         ?>
@@ -113,11 +112,14 @@
                   $array = array();
                   $tabla = 0;
                   $contador = 0;
+                  ?>
+                  <?php
                   //if ($calificacion['mostrar_calificacion'] == 1){
                     //for($i = 0 ; $i < sizeof($calificacion) ; $i++ ){echo ($calificacion['mostrar_calificacion']);}
                     while($dato = mysqli_fetch_array($datos)){
                       //echo ($calificacion['mostrar_calificacion']);
                       if ($tabla == 0 && $dato['mostrar_calificacion'] == 1) {?>
+                      <h2>Calificaciones disponibles para subir</h2>
                         <table class="container">
                         <thead>
                           <th>Código de la materia</th>
@@ -155,7 +157,7 @@
                       <?php $contador++;?>
                     </tr>
                     <?php
-                      }else if($contador = 0)echo("Las calificaciones no están disponibles en este momento, intente en otra ocasión"); 
+                      }else if($contador == 0)?> <h2>Las calificaciones no están disponibles de momento, intente en otra ocasión</h2> <?php break;
                     }
                     ?>
                 </tbody>

@@ -101,15 +101,12 @@
         ?>
         </div>
         <h1>Eventos</h1>
-        <h3>
+        <h2>
             En este apartado podrá crear eventos para realizar en la escuela. <br>
             Solo puede crear un evento a la vez, por lo cual maneje bien sus eventos.
-        </h3>
-        
+        </h2>
         <br>
-
         <?php $consulta = mysqli_query($conexion, "SELECT * FROM eventos;"); ?>
-        
         <?php $tabla = 0; 
             if ($tabla == 0){?>
             <table class="container">

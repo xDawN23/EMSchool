@@ -133,13 +133,14 @@
                       <td><?php echo $calificacion['aula']?></td>
                       <td><?php echo $calificacion['grupo']?></td>
                     </tr>
-                    <?php
+                    <?php $id_maestro = $calificacion['id_docente'];
                       }
                     ?>
                 </tbody>
               </table>
           </div>
         <form action="registroMateria.php" method = "POST">
+          <input type="hidden" name = "codigo_maestro" value =" <?php echo $id_maestro ?>">
           <input type="text" name="codigo" value = "" placeholder = "Ingrese el código"> <br><br>
           <input type="submit" value="Inscribir"> <br><br><br>
         </form>

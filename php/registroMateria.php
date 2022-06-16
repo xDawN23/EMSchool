@@ -7,6 +7,7 @@ session_start();
     if(isset($_POST)){
         $codigo_alumno = $_SESSION['codigo'];
         $codigo_materia = $_POST['codigo'];
+        $codigo_maestro = $_POST['codigo_maestro'];
         $consulta = mysqli_query($conexion, "SELECT * FROM `calificacion` WHERE `id_alumno` LIKE '$codigo_alumno' AND `id_materia` LIKE '$codigo_materia'");
         $rconsulta = mysqli_fetch_assoc($consulta);
         $materia = mysqli_query($conexion, "SELECT * FROM `materia` WHERE `id_materia` LIKE '$codigo_materia'");
@@ -26,7 +27,7 @@ session_start();
                 echo $grupo, $salon;
                 $mostrar_calificacion = 0;
                 $calificacion = 0;
-                $sql = "INSERT INTO calificacion (calificacion, grupo, salon, id_alumno, id_materia, mostrar_calificacion) VALUES ('$calificacion', '$grupo', '$salon', '$codigo_alumno', '$codigo_materia', '$mostrar_calificacion');";
+                $sql = "INSERT INTO calificacion (calificacion, id_docente, grupo, salon, id_alumno, id_materia, mostrar_calificacion) VALUES ('$calificacion', '$codigo_maestro', '$grupo', '$salon', '$codigo_alumno', '$codigo_materia', '$mostrar_calificacion');";
                 $guardar = mysqli_query($conexion, $sql);
                 if($guardar){echo "<script>alert('Registro exitoso');</script>";
                     $_SESSION['mensaje'] = "<script>alert('Registro exitoso');</script>"; header("Location: registro.php");
