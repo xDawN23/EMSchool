@@ -1,5 +1,5 @@
 Necesidades para tercera entrega:
 -Ver qué hacer con el apartado de pagos para alumnos.
 -Configuración de maestro.
--
+-Apartado para modificar las materias o eliminarlas, al igual que las calificaciones.
 -
