@@ -8,7 +8,7 @@
     $query = mysqli_query($conexion, "SELECT * FROM persona WHERE codigo = '$codigo'"); 
     $usuario = mysqli_fetch_assoc($query);
 
-    if($usuario['cargo'] != "admin"){
+    if($usuario['cargo'] == "maestro"){
         session_destroy();
         header("Location: login.php");
     }

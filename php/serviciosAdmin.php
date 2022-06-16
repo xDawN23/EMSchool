@@ -100,9 +100,6 @@
     </div>
 
     <div class="home_content"> 
-
-      
-    
       <div class="padre">
         <div class="cal hijo">
           <h2>Activar o desactivar las calificaciones</h2><br>

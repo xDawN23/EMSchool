@@ -31,3 +31,5 @@
     }
     
     header('Location: prestamos.php');
+
+?>
