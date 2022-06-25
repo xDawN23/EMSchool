@@ -1,5 +1,7 @@
 Necesidades para tercera entrega:
--Ver qué hacer con el apartado de pagos para alumnos.
--Configuración de maestro.
+-Ver qué hacer con el apartado de pagos para alumnos (eliminarlo o poner un "formato" de pago).
+-Configuración de maestro. (ver qué hacer)
 -Apartado para modificar las materias o eliminarlas, al igual que las calificaciones.
--
+-Arreglar el ingreso de horas para materias o campos que lo necesite.
+-Agregar estética a los formularios disponibles (como los habías hecho en la parte de activar/desactivar calificaciones).
+-Cambiar el login por otro mejor en internet.

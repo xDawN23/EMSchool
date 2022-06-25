@@ -187,34 +187,52 @@
           <br><br><br>
         </form>
 
-      <!--  Tabla de alumnos inscritos en los eventos  --> 
-
-      <?php $consulta = mysqli_query($conexion, ";"); ?>
-
-      <?php while($dato = mysqli_fetch_array($consulta)){ ?>
         
-        <table class="container">
-                <thead>
-                  <th>Nombre del evento</th>
-                  <th>Código del evento</th>
-                  <th>Descripción del evento</th>
-                  <th>Código del docente encargado</th>
-                  <th>Fecha del evento (A/M/D)</th>
-                  <th>Hora del evento</th>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><?php echo $dato['nombre_evento'];?></td>
-                    <td><?php echo $dato['id_evento'];?></td>
-                    <td><?php echo $dato['descripcion'];?></td>
-                    <td><?php echo $dato['id_docente'];?></td>
-                    <td><?php echo $dato['fecha'];?></td>
-                    <td><?php echo $dato['hora'];?></td>
-                  </tr>
-                </tbody>
-              </table>
+        <?php while($dato = mysqli_fetch_array($consulta)){ ?>
+          
+          <table class="container">
+            <thead>
+              <th>Nombre del evento</th>
+              <th>Código del evento</th>
+              <th>Descripción del evento</th>
+              <th>Código del docente encargado</th>
+              <th>Fecha del evento (A/M/D)</th>
+              <th>Hora del evento</th>
+            </thead>
+            <tbody>
+              <tr>
+                <td><?php echo $dato['nombre_evento'];?></td>
+                <td><?php echo $dato['id_evento'];?></td>
+                <td><?php echo $dato['descripcion'];?></td>
+                <td><?php echo $dato['id_docente'];?></td>
+                <td><?php echo $dato['fecha'];?></td>
+                <td><?php echo $dato['hora'];?></td>
+              </tr>
+            </tbody>
+          </table>
+          <?php } ?>
+          <!--  Tabla de alumnos inscritos en los eventos  --> 
+          <?php $lista = mysqli_query($conexion, "SELECT persona.codigo, persona.nombre, persona.apellido, persona.telefono, lista_evento.id_alumno FROM lista_evento INNER JOIN persona ON persona.codigo = lista_evento.id_alumno;"); ?>
+          <?php if($lista < 0){ ?>
+          <h2>Alumnos registrados a los eventos</h2>
+            <table class="container">
+            <thead>
+              <th>Código del alumno</th>
+              <th>Nombre del alumno</th>
+              <th>Teléfono del alumno</th>
+            </thead>
+            <tbody>
+              <?php while($dato = mysqli_fetch_array($lista)){ ?>
+              <tr>
+                <td><?php echo $dato['codigo'];?></td>
+                <td><?php echo $dato['nombre'];?> <?php echo $dato['apellido'];?></td>
+                <td><?php echo $dato['telefono'];?></td>
+              </tr>
               <?php } ?>
-        
+            </tbody>
+          </table>
+
+          <?php } ?>
       </div><!--Div text  -->
     </div><!--Div home_content  -->
     <?php if(isset($_SESSION['mensaje'])){

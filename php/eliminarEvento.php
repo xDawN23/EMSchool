@@ -22,11 +22,15 @@
 
     $guardar = mysqli_query($conexion, $sql);
 
+    $eliminar = "DELETE FROM `lista_evento` WHERE `id_docente` = $codigo";
+
+    $eliminacion = mysqli_query($conexion, $eliminar);
+
     $validar = "UPDATE maestro SET `evento_creado` = '0' WHERE `id_docente` = '$codigo'";
 
     $conf = mysqli_query($conexion, $validar);
 
-    if($guardar && $conf){
+    if($guardar && $conf && $eliminacion){
         $_SESSION['mensaje'] = "<script>alert('Evento eliminado correctamente.');</script>"; header('Location: registroMateriasMaestro.php');
     }else{
         $_SESSION['mensaje'] = "<script>alert('Error al eliminar el evento.');</script>"; header('Location: registroMateriasMaestro.php');

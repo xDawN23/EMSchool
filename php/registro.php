@@ -141,7 +141,8 @@
           </div>
         <form action="registroMateria.php" method = "POST">
           <input type="hidden" name = "codigo_maestro" value =" <?php echo $id_maestro ?>">
-          <input type="text" name="codigo" value = "" placeholder = "Ingrese el código"> <br><br>
+          <h2>Ingresa el código de la materia</h2> <br>
+          <input type="number" name="codigo" value = "" placeholder = "Ingrese el código"> <br><br>
           <input type="submit" value="Inscribir"> <br><br><br>
         </form>
 
@@ -149,19 +150,19 @@
         <h3>Registro a eventos</h3>
           Introduzca el código del evento para inscribirte
 
-        <?php $consulta = mysqli_query($conexion, "SELECT * FROM eventos;"); 
+        <?php $consulta = mysqli_query($conexion, "SELECT * FROM eventos;"); ?>
         
-        while($dato = mysqli_fetch_array($consulta)){ ?>
         <table class="container">
-                <thead>
-                  <th>Nombre del evento</th>
-                  <th>Código del evento</th>
-                  <th>Descripción del evento</th>
-                  <th>Código del docente encargado</th>
-                  <th>Fecha del evento (A/M/D)</th>
-                  <th>Hora del evento</th>
-                </thead>
-                <tbody>
+          <thead>
+            <th>Nombre del evento</th>
+            <th>Código del evento</th>
+            <th>Descripción del evento</th>
+            <th>Código del docente encargado</th>
+            <th>Fecha del evento (A/M/D)</th>
+            <th>Hora del evento</th>
+          </thead>
+          <tbody>
+                  <?php while($dato = mysqli_fetch_array($consulta)){ ?>
                   <tr>
                     <td><?php echo $dato['nombre_evento'];?></td>
                     <td><?php echo $dato['id_evento'];?></td>
@@ -170,12 +171,14 @@
                     <td><?php echo $dato['fecha'];?></td>
                     <td><?php echo $dato['hora'];?></td>
                   </tr>
+                  <?php $id_maestro = $dato['id_docente'];
+                    }
+                ?>  
                 </tbody>
               </table>
-        <?php } ?>
-
         <form action="registroEvento.php" method = "POST">
-          <label>Ingrese el código del evento</label> <br>
+          <h4>Ingresa el código del evento</h4> <br>
+          <input type="hidden" name = "codigo_maestro" value =" <?php echo $id_maestro ?>">
           <input type="text" name="codigo" value = "" placeholder = "Código"> <br><br>
           <input type="submit" value="Inscribir"> <br><br><br>
 
