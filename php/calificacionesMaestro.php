@@ -102,7 +102,7 @@
         $valor = $_SESSION['codigo'];
         //Obtenemos el codigo el maestro, para asi obtener los codigos de las materias a las que estan asociadas por el codigo.
         //SELECT cal.id_materia, m.id_materia FROM calificacion cal INNER JOIN maestro m ON cal.id_materia = m.id_materia WHERE m.id_docente = '$valor'
-        $datos = mysqli_query($conexion, "SELECT * FROM `calificacion` WHERE id_docente = $valor ORDER BY id_materia ASC");
+        $datos = mysqli_query($conexion, "SELECT * FROM `calificacion` WHERE id_docente = $valor;");
         //$arreglo = mysqli_fetch_assoc($datos);
         //echo($arreglo);
         ?>
@@ -157,9 +157,8 @@
                       <?php $contador++;?>
                     </tr>
                     <?php
-                      }else if($contador == 0)?> <h2>Las calificaciones no están disponibles de momento, intente en otra ocasión</h2> <?php break;
-                    }
-                    ?>
+                      }else{?><h2>Las calificaciones no están disponibles por el momento</h2><?php break;} 
+                    }?>
                 </tbody>
               </table>
         </div>
