@@ -119,9 +119,7 @@
               <th>Modificar evento</th>
               <th>Eliminar evento</th>
             </thead>
-            <p>
-             hola 
-            <p>
+
             <tbody>
               <?php $tabla = 1;
               }
@@ -172,23 +170,27 @@
                 </tbody>
               </table>
 
-        <form action="crearEvento.php" method="post">
-          <label>Nombre para el evento</label>
-          <input type="input" name="nombre_evento" placeholder ="Nombre del evento">
-          <br>
-          <label>Descripción breve del evento</label>
-          <input type="input" name="descripcion" placeholder="Descripción del evento">
-          <br>
-          <label>Fecha del evento</label>
-          <input type="date" name="fecha_evento">
-          <br>
-          <label>Hora del evento</label>
-          <input type="time" name="hora_evento">
-          <br>
-          <input type="submit" value="Enviar">
-          <input type="hidden" name = "codigo" value =" <?php echo $valor ?>"> 
-          <br><br><br>
-        </form>
+            <div class="padre">
+              <div class="hijo">
+                <form action="crearEvento.php" method="post">
+                  <label>Nombre para el evento</label>
+                  <input type="input" name="nombre_evento" placeholder ="Nombre del evento">
+                  <br>
+                  <label>Descripción breve del evento</label>
+                  <input type="input" name="descripcion" placeholder="Descripción del evento">
+                  <br>
+                  <label>Fecha del evento</label>
+                  <input type="date" name="fecha_evento">
+                  <br>
+                  <label>Hora del evento</label>
+                  <input type="time" name="hora_evento">
+                  <br>
+                  <input type="submit" value="Enviar" class="btn btn1">
+                  <input type="hidden" name = "codigo" value =" <?php echo $valor ?>"> 
+                  <br><br><br>
+                </form>
+              </div>
+            </div>
 
         
         <?php while($dato = mysqli_fetch_array($consulta)){ ?>
@@ -260,7 +262,7 @@
     }
     </script>
 
-  <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+  <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
   <script type="text/javascript" src="../js/inicioAlumno.js"></script>
 </body>
 </html>

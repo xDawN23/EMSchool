@@ -104,57 +104,65 @@
     <!--***************************************************************************************  -->
 
     <div class="home_content"> 
-        <div class="text">
-            <h2>Registro de alumnos</h2>
+    <div class="padre">
+        <div class="text hijo">
+          <h2>Registro de alumnos</h2>
             <form class="form1" method="POST" action="registroUsuarios.php">
-                <!--codigo, nombre, apellido,  telefono, correo, genero, contrasena, tipo_sangre, cargo, estatus-->
-                <input type="text" name="codigo" placeholder="Código">
-                <input type="text" name="nombre" placeholder="Nombre/s">
-                <input type="text" name="apellido" placeholder="Apellidos">
-                <input type="text" name="telefono" placeholder="Teléfono">
-                <input type="email" name="correo" placeholder="Correo">
-                <select name="genero">
-                <option value="M">Masculino</option>
-                <option value="F">Femenino</option>
-                </select>
-                <input type="password" name="contrasena" placeholder="Contraseña del usuario">                
-                <select name="tipo_sangre">
-                <option value="O-">O-</option>
-                <option value="O+">O+</option>
-                <option value="A-">A-</option>
-                <option value="A+">A+</option>
-                <option value="B-">B-</option>  
-                <option value="B+">B+</option>
-                <option value="AB-">AB-</option>
-                <option value="AB+">AB+</option>
-                </select>
-                <select name="cargo">
-                <option value="alumno">Alumno</option>
-                <option value="maestro">Maestro</option>
-                <option value="admin">Administrador</option>
-                </select>
-                <select name="estatus">
-                <option value="activo">Activo</option>
-                <option value="inactivo">Inactivo</option>
-                </select>
-                <br>
-                <input type="submit" value="Ingresar" class="submit">
+              <!--codigo, nombre, apellido,  telefono, correo, genero, contrasena, tipo_sangre, cargo, estatus-->
+              <input type="text" name="codigo" placeholder="Código">
+              <input type="text" name="nombre" placeholder="Nombre/s">
+              <input type="text" name="apellido" placeholder="Apellidos">
+              <input type="text" name="telefono" placeholder="Teléfono">
+              <input type="email" name="correo" placeholder="Correo">
+              <select name="genero">
+              <option value="M">Masculino</option>
+              <option value="F">Femenino</option>
+              </select>
+              <input type="password" name="contrasena" placeholder="Contraseña del usuario">                
+              <select name="tipo_sangre">
+              <option value="O-">O-</option>
+              <option value="O+">O+</option>
+              <option value="A-">A-</option>
+              <option value="A+">A+</option>
+              <option value="B-">B-</option>  
+              <option value="B+">B+</option>
+              <option value="AB-">AB-</option>
+              <option value="AB+">AB+</option>
+              </select>
+              <select name="cargo">
+              <option value="alumno">Alumno</option>
+              <option value="maestro">Maestro</option>
+              <option value="admin">Administrador</option>
+              </select>
+              <select name="estatus">
+              <option value="activo">Activo</option>
+              <option value="inactivo">Inactivo</option>
+              </select>
+              <br>
+              <input type="submit" value="Ingresar" class="submit btn btn1">
             </form>
+
           <!--Tabla de búsqueda  -->
           <?php 
           $data = mysqli_query($conexion, "SELECT * FROM persona ORDER By codigo");         
           ?>
         </div>
-        <h3>Introduzca el código del usuario para interactuar</h3>
-        <form action="eliminar.php" method="post">
-          <input type="text" name="cod"> <br>
-          <input type="submit" value="Eliminar Alumno" name="btnBorrar">
-        </form>
 
-        <form action="modificar.php" method="post">
-          <input type="text" name="cod"> <br>
-          <input type="submit" value="Modificar Datos" name="btnMod">
-        </form>
+        <div class="hijo">
+          <h3>Introduzca el código del usuario para interactuar</h3>
+          <form action="eliminar.php" method="post">
+            <input type="text" name="cod"> <br>
+            <input type="submit" value="Eliminar Alumno" name="btnBorrar" class="btn btn1">
+          </form>
+
+          <form action="modificar.php" method="post">
+            <input type="text" name="cod"> <br>
+            <input type="submit" value="Modificar Datos" name="btnMod" class="btn btn1">
+          </form>
+        </div>
+        
+    </div>
+
           <div id = "datos">
               <table class="container">
                 <thead>

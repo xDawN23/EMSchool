@@ -139,12 +139,17 @@
                 </tbody>
               </table>
           </div>
-        <form action="registroMateria.php" method = "POST">
-          <input type="hidden" name = "codigo_maestro" value =" <?php echo $id_maestro ?>">
-          <h2>Ingresa el código de la materia</h2> <br>
-          <input type="number" name="codigo" value = "" placeholder = "Ingrese el código"> <br><br>
-          <input type="submit" value="Inscribir"> <br><br><br>
-        </form>
+
+          <div class="padre">
+            <div class="hijo">
+              <form action="registroMateria.php" method = "POST">
+                <input type="hidden" name = "codigo_maestro" value =" <?php echo $id_maestro ?>">
+                <h2>Ingresa el código de la materia</h2> <br>
+                <input type="number" name="codigo" value = "" placeholder = "Código"> <br><br>
+                <input type="submit" value="Inscribir" class="btn btn1"> <br><br><br>
+              </form>
+            </div>
+          </div>
 
         <div class="text">
         <h3>Registro a eventos</h3>
@@ -176,11 +181,17 @@
                 ?>  
                 </tbody>
               </table>
-        <form action="registroEvento.php" method = "POST">
-          <h4>Ingresa el código del evento</h4> <br>
-          <input type="hidden" name = "codigo_maestro" value =" <?php echo $id_maestro ?>">
-          <input type="text" name="codigo" value = "" placeholder = "Código"> <br><br>
-          <input type="submit" value="Inscribir"> <br><br><br>
+          
+          <div class="padre">
+            <div class="hijo">
+              <form action="registroEvento.php" method = "POST">
+                <h4>Ingresa el código del evento</h4> <br>
+                <input type="hidden" name = "codigo_maestro" value =" <?php echo $id_maestro ?>">
+                <input type="text" name="codigo" value = "" placeholder = "Código"> <br><br>
+                <input type="submit" value="Inscribir" class="btn btn1"> <br><br><br>
+              </form>
+            </div>
+          </div>
 
         <?php if(isset($_SESSION['mensaje'])){
           echo "<div>".$_SESSION['mensaje']."</div>";
