@@ -22,7 +22,7 @@
     <meta http-equiv="X-UA-Compatible" content=="IE=edge"/>
     <meta name="google" value="notranslate"/>
     <title>Maestro</title>
-    <link rel="stylesheet" href="../css/calificaciones.css">
+    <link rel="stylesheet" href="../css/conf.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
     <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
@@ -90,31 +90,26 @@
         </div>
       </div>
     </div>
-    <!--***************************************************************************************  -->
-    <!-- REVISAR EN ESTE APARTADO, CÓMO BUSCAR POR EL CÓDIGO ESPECÍFICO DEL USUARIO QUE INGRESÓ. -->
-    <!--***************************************************************************************  -->
+    
     <div class="home_content"> 
-        <div class="text">Bienvenido, maestro 
-        <?php 
-        $valor = $_SESSION['codigo'];
-        $query = mysqli_query($conexion, "SELECT * FROM persona WHERE codigo = '$valor'"); 
-        $usuario = mysqli_fetch_assoc($query);
-        echo $usuario['nombre'];
-        ?>
-        </div>
-
-      <div id="content">
-
+      <div class="padre">
           
+        <div class="hijo">
+        <h2>Cambio de contraseña</h2> 
+          <form action="newpass_prof.php" method="post">
+            <?php
+              $codigo = $_SESSION['codigo'];
+            ?>
+            <input type="text" name="old_pass" placeholder="Introduzca su contraseña actual"> <br> <br>
+
+            <input type="text" name="new_pass" placeholder="Introduzca una contraseña nueva"> <br> <br>
+            <input type="submit" value="Modificar Datos" name="btnMod" class="btn btn1">
+          </form>
         </div>
-        <div class="footer">
-        <p> Todos los derechos reservados © 2021</p>
-      </div>
+        
       </div>
     </div>
 
-    </div>
-  
     <script>
      let btn = document.querySelector("#btn");
      let sidebar = document.querySelector(".sidebar");
@@ -133,7 +128,6 @@
      }
     </script>
    
-   <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
-     <script type="text/javascript" src="../js/inicioAlumno.js"></script>
+   <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
 </body>
 </html>
