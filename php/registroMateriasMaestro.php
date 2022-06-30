@@ -119,6 +119,9 @@
               <th>Modificar evento</th>
               <th>Eliminar evento</th>
             </thead>
+            <p>
+             hola 
+            <p>
             <tbody>
               <?php $tabla = 1;
               }
