@@ -15,6 +15,11 @@ if(isset($_POST)){
     $cargo = isset($_POST['cargo']) ? $_POST['cargo'] : false; 
     $estatus = isset($_POST['estatus']) ? $_POST['estatus'] : false; 
 
+    /**Encriptamos la contraseña */
+    $salt = 'SHIFLETT';
+    $password_hash = hash('sha256', $salt . hash('sha256', $contrasena . $salt));
+
+
     //Array de errores para ver en qué campos hay errores.// 
     $errores = array();
 
@@ -71,7 +76,7 @@ if(isset($_POST)){
         $errores['genero'] = "El genero no es válido";
     }
     // Validación para que el campo de la contraseña no esté vacío.//
-    if(!empty($contrasena)){
+    if(!empty($password_hash)){
         $contrasena_correcto = true;
         echo "La contraseña es válida";
     }else{
@@ -112,7 +117,7 @@ if(isset($_POST)){
         $guardar_usuario = true;
         $contrasena_segura = password_hash($contrasena, PASSWORD_BCRYPT, ['cost' => 4]);
         //<!--codigo, nombre, apellido,  telefono, correo, genero, contrasena, tipo_sangre, cargo, estatus-->
-        $sql = "INSERT INTO persona (`codigo`, `nombre`, `apellido`, `telefono`, `correo`, `genero`, `contrasena`, `tipo_sangre`, `cargo`, `estatus`) VALUES ('$codigo', '$nombre', '$apellido', '$telefono', '$correo', '$genero', '$contrasena', '$tipo_sangre', '$cargo', '$estatus');";
+        $sql = "INSERT INTO persona (`codigo`, `nombre`, `apellido`, `telefono`, `correo`, `genero`, `contrasena`, `tipo_sangre`, `cargo`, `estatus`) VALUES ('$codigo', '$nombre', '$apellido', '$telefono', '$correo', '$genero', '$password_hash', '$tipo_sangre', '$cargo', '$estatus');";
 
         $guardar = mysqli_query($conexion, $sql);
 

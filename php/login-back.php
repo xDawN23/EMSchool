@@ -12,10 +12,17 @@
       session_unset($_SESSION['error_login']);
     }
 
+    /**
+     * Encriptamos la contraseña recibida para compararla 
+     */
+    $salt = 'SHIFLETT';
+    $password_hash = hash('sha256', $salt . hash('sha256', $contrasena. $salt));
+
+
     //Consulta para comprobar las credenciales del usuario 
     $sql = "SELECT * FROM persona WHERE codigo = '$codigo'";
     $login = mysqli_query($conexion, $sql);
-    $cont = "SELECT * FROM persona WHERE contrasena = '$contrasena'";
+    $cont = "SELECT * FROM persona WHERE contrasena = '$password_hash'";
     $contr = mysqli_query($conexion, $cont);
     
     
@@ -25,7 +32,7 @@
       //Comprobar contraseña
       // $verify = password_verify($contrasena, $usuario['contrasena']);
       // var_dump ($verify);
-      if($contrasena == $usuario1['contrasena'] && $codigo == $usuario1['codigo']){
+      if($password_hash == $usuario1['contrasena'] && $codigo == $usuario1['codigo']){
     
         if($usuario1['cargo'] == "alumno"){
           session_start();
