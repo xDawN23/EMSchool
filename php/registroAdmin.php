@@ -23,6 +23,7 @@
     <meta name="google" value="notranslate"/>
     <title>Administrador</title>
     <link rel="stylesheet" href="../css/registroAdmin.css">
+    <link rel="stylesheet" href="../css/FormAdmin.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
     <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
