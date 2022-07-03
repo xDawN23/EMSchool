@@ -150,9 +150,6 @@
                 </tbody>
               </table>
           </div>
-        <div class="footer">
-        <p> Todos los derechos reservados © 2021</p>
-      </div>
     </div>
 
     </div>
