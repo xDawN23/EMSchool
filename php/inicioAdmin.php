@@ -24,7 +24,7 @@
     <meta name="google" value="notranslate"/>
     <title>Administrador</title>
     <link rel="stylesheet" href="../css/inicioAdmin.css">
-    <!-- <link rel="stylesheet" href="../css/loader.css"> -->
+    <link rel="stylesheet" href="../css/loader.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
     <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
@@ -88,6 +88,13 @@
     <!-- REVISAR EN ESTE APARTADO, CÓMO BUSCAR POR EL CÓDIGO ESPECÍFICO DEL USUARIO QUE INGRESÓ. -->
     <!--***************************************************************************************  -->
     <div class="home_content"> 
+
+        <div id="contenedor_carga">
+          <div id="carga">
+
+          </div>
+        </div>
+
         <div class="text">Bienvenido, administrador
         <?php  
         $valor = $_SESSION['codigo'];
@@ -143,11 +150,14 @@
     }
     </script>
 
-    <!-- <script>
-      $(document).ready(function(
-        setTimeOut(function(){$(".loader-wraper").fadeOut("slow")"), 1000); }
-      ){});
-    </script> -->
+    <script>
+      window.onload = function(){
+        var contenedor = document.getElementById("contenedor_carga");
+
+        contenedor.style.visibility = 'hidden';
+        contenedor.style.opacity = '0';
+      }
+    </script> 
 
 </body>
 </html>

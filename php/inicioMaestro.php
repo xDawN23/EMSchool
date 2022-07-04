@@ -23,6 +23,7 @@
     <meta name="google" value="notranslate"/>
     <title>Maestro</title>
     <link rel="stylesheet" href="../css/inicioMaestro.css">
+    <link rel="stylesheet" href="../css/loader.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
     <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
@@ -95,6 +96,13 @@
     <!--***************************************************************************************  -->
 
     <div class="home_content"> 
+
+    <div id="contenedor_carga">
+      <div id="carga">
+        
+      </div>
+    </div>
+
         <div class="text">Bienvenido, maestro
         <?php 
         $valor = $_SESSION['codigo'];
@@ -172,5 +180,14 @@
     }
     </script>
     
+    <script>
+      window.onload = function(){
+        var contenedor = document.getElementById("contenedor_carga");
+
+        contenedor.style.visibility = 'hidden';
+        contenedor.style.opacity = '0';
+      }
+    </script> 
+
 </body>
 </html>
