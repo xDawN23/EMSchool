@@ -170,7 +170,7 @@
                 </tbody>
               </table>
 
-            <div class="padre">
+            <div class="">
               <div class="hijo">
                 <form action="crearEvento.php" method="post">
                   <label>Nombre para el evento</label>
@@ -183,7 +183,7 @@
                   <input type="date" name="fecha_evento">
                   <br>
                   <label>Hora del evento</label>
-                  <input type="time" name="hora_evento">
+                  <input type="input" name="hora_evento" placeholder="Ejemplo: 18:00">
                   <br>
                   <input type="submit" value="Enviar" class="btn btn1">
                   <input type="hidden" name = "codigo" value =" <?php echo $valor ?>"> 
@@ -217,14 +217,16 @@
           </table>
           <?php } ?>
           <!--  Tabla de alumnos inscritos en los eventos  --> 
-          <?php $lista = mysqli_query($conexion, "SELECT persona.codigo, persona.nombre, persona.apellido, persona.telefono, lista_evento.id_alumno FROM lista_evento INNER JOIN persona ON persona.codigo = lista_evento.id_alumno;"); ?>
-          <?php if($lista < 0){ ?>
+          <?php $lista = mysqli_query($conexion, "SELECT persona.codigo, persona.nombre, persona.apellido, persona.telefono, persona.correo, lista_evento.id_alumno FROM lista_evento INNER JOIN persona ON persona.codigo = lista_evento.id_alumno;"); ?>
+          <?php ?>
+          <br><br><br>
           <h2>Alumnos registrados a los eventos</h2>
             <table class="container">
             <thead>
               <th>Código del alumno</th>
               <th>Nombre del alumno</th>
               <th>Teléfono del alumno</th>
+              <th>Correo del alumno</th>
             </thead>
             <tbody>
               <?php while($dato = mysqli_fetch_array($lista)){ ?>
@@ -232,12 +234,12 @@
                 <td><?php echo $dato['codigo'];?></td>
                 <td><?php echo $dato['nombre'];?> <?php echo $dato['apellido'];?></td>
                 <td><?php echo $dato['telefono'];?></td>
+                <td><?php echo $dato['correo'];?></td>
               </tr>
               <?php } ?>
             </tbody>
           </table>
-
-          <?php } ?>
+          <?php  ?>
       </div><!--Div text  -->
     </div><!--Div home_content  -->
     <?php if(isset($_SESSION['mensaje'])){

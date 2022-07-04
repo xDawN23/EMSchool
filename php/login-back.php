@@ -30,8 +30,8 @@
       $usuario1 = mysqli_fetch_assoc($login);
       
       //Comprobar contraseña
-      // $verify = password_verify($contrasena, $usuario['contrasena']);
-      // var_dump ($verify);
+      //$verify = password_verify($contrasena, $usuario['contrasena']);
+      //var_dump ($verify);
       if($password_hash == $usuario1['contrasena'] && $codigo == $usuario1['codigo']){
     
         if($usuario1['cargo'] == "alumno"){

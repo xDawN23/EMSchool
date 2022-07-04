@@ -117,24 +117,33 @@ if(isset($_POST)){
         $guardar_usuario = true;
         $contrasena_segura = password_hash($contrasena, PASSWORD_BCRYPT, ['cost' => 4]);
         //<!--codigo, nombre, apellido,  telefono, correo, genero, contrasena, tipo_sangre, cargo, estatus-->
+        echo $password_hash;
         $sql = "INSERT INTO persona (`codigo`, `nombre`, `apellido`, `telefono`, `correo`, `genero`, `contrasena`, `tipo_sangre`, `cargo`, `estatus`) VALUES ('$codigo', '$nombre', '$apellido', '$telefono', '$correo', '$genero', '$password_hash', '$tipo_sangre', '$cargo', '$estatus');";
 
         $guardar = mysqli_query($conexion, $sql);
 
-        if($cargo == 'maestro'){
+        if($cargo == 'maestro' && $guardar){
             $maestro = "INSERT INTO maestro (`id_docente`, `codigo`, evento_creado) VALUES ('$codigo', '$codigo', '0');";
-            $resultado = mysqli_query($conexion, $maestro);
+            $crear_maestro = mysqli_query($conexion, $maestro);
+            $_SESSION['mensaje'] = "<script>alert('El registro del maestro se completó con éxito.');</script>";
+            if($crear_maestro){
+                header('Location: registroAdmin.php');
+            }
         }
 
-        if($cargo == 'alumno'){
+        if($cargo == 'alumno' && $guardar){
             $alumno = "INSERT INTO alumno (`id_alumno`, `codigo`, prestamo) VALUES ('$codigo', '$codigo', '0');";
-            $resultado = mysqli_query($conexion, $alumno);
+            $crear_alumno = mysqli_query($conexion, $alumno);
+            $_SESSION['mensaje'] = "<script>alert('El registro del alumno se completó con éxito.');</script>";
+            header('Location: registroAdmin.php');
         }
         
-        if($guardar){
-            $_SESSION['mensaje'] = "El registro se compléto con éxito.";
+        if(!$guardar){
+            $_SESSION['mensaje'] = "<script>alert('Hubo un error, intente de nuevo.');</script>";
+            header('Location: registroAdmin.php');
         }else{
-            $_SESSION['errores']['general'] = "Error al guardar los datos, verifique que sean correctos.";
+            $_SESSION['mensaje'] = "<script>alert('El registro se completó con éxito.');</script>";
+            header('Location: registroAdmin.php');
         }
     }else{
         $_SESSION['errores'] = $errores;

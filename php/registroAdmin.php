@@ -1,5 +1,5 @@
 <?php
-    include_once 'conexion.php';
+    require_once 'conexion.php';
     session_start(); 
 
     //Valida que el usuario este logueado, además de que otros usuarios no puedan acceder a partes del sistema que no deberían poder acceder.
@@ -70,13 +70,6 @@
           <span class="tooltip">Servicios</span>
         </li>
         <li>
-          <a href="configuracionAdmin.php">
-            <i class='bx bx-cog' ></i>
-            <span class="links_name">Configuración</span>
-          </a>
-          <span class="tooltip">Configuración</span>
-        </li>
-        <li>
           <a href="prestamos.php">
             <i class='bx bx-music'></i>
             <span class="links_name">Préstamos</span>
@@ -107,7 +100,7 @@
     <div class="home_content"> 
     <div class="padre">
         <div class="text hijo">
-          <h2>Registro de alumnos</h2>
+          <h2>Registro de usuarios</h2>
             <form class="form1" method="POST" action="registroUsuarios.php">
               <!--codigo, nombre, apellido,  telefono, correo, genero, contrasena, tipo_sangre, cargo, estatus-->
               <input type="text" name="codigo" placeholder="Código">
@@ -153,12 +146,12 @@
           <h3>Introduzca el código del usuario para interactuar</h3>
           <form action="eliminar.php" method="post">
             <input type="text" name="cod"> <br>
-            <input type="submit" value="Eliminar Alumno" name="btnBorrar" class="btn btn1">
+            <input type="submit" value="Eliminar usuario" name="btnBorrar" class="btn btn1">
           </form>
 
           <form action="modificar.php" method="post">
             <input type="text" name="cod"> <br>
-            <input type="submit" value="Modificar Datos" name="btnMod" class="btn btn1">
+            <input type="submit" value="Modificar datos" name="btnMod" class="btn btn1">
           </form>
         </div>
         

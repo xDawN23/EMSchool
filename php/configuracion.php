@@ -68,13 +68,6 @@
           <span class="tooltip">Registro</span>
         </li>
         <li>
-          <a href="pagos.php">
-            <i class='bx bx-cart-alt' ></i>
-            <span class="links_name">Pagos</span>
-          </a>
-          <span class="tooltip">Pagos</span>
-        </li>
-        <li>
           <a href="servicios.php">
             <i class='bx bxs-data'></i>
             <span class="links_name">Servicios</span>
@@ -104,7 +97,7 @@
         </div>
       </div>
     </div>
-   
+
     <div class="home_content"> 
       <div class="padre">
           
@@ -115,7 +108,6 @@
               $codigo = $_SESSION['codigo'];
             ?>
             <input type="text" name="old_pass" placeholder="Introduzca su contraseña actual"> <br> <br>
-
             <input type="text" name="new_pass" placeholder="Introduzca una contraseña nueva"> <br> <br>
             <input type="submit" value="Modificar Datos" name="btnMod" class="btn btn1">
           </form>

@@ -68,13 +68,6 @@
         <span class="tooltip">Servicios</span>
         </li>
         <li>
-        <a href="inicioAdmin.php">
-            <i class='bx bx-cog' ></i>
-            <span class="links_name">Configuración</span>
-        </a>
-        <span class="tooltip">Configuración</span>
-        </li>
-        <li>
         <a href="prestamos.php">
             <i class='bx bx-music'></i>
             <span class="links_name">Préstamos</span>

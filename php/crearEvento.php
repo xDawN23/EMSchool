@@ -8,11 +8,11 @@
     $fecha_evento = $_POST['fecha_evento'];
     $hora_evento = $_POST['hora_evento'];
 
+    echo $hora_evento;
+
     $consulta = mysqli_query($conexion, "SELECT evento_creado FROM maestro WHERE codigo = '$codigo'");
 
     $arreglo = mysqli_fetch_assoc($consulta);
-
-    echo $arreglo['evento_creado'];
 
     if($arreglo['evento_creado'] == 1){
 
@@ -57,7 +57,7 @@
 
         if($errores == 0){
 
-            $sql = "INSERT INTO `eventos`(`nombre_evento`, `descripcion`, `id_docente`, fecha) VALUES ('$nombre_evento','$descripcion_evento','$codigo', '$fecha_evento')";
+            $sql = "INSERT INTO `eventos`(`nombre_evento`, `descripcion`, `id_docente`, fecha, hora) VALUES ('$nombre_evento','$descripcion_evento','$codigo', '$fecha_evento', '$hora_evento')";
 
             $consulta = mysqli_query($conexion, $sql);
 

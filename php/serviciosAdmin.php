@@ -69,13 +69,6 @@
           <span class="tooltip">Servicios</span>
         </li>
         <li>
-          <a href="configuracionAdmin.php">
-            <i class='bx bx-cog' ></i>
-            <span class="links_name">Configuración</span>
-          </a>
-          <span class="tooltip">Configuración</span>
-        </li>
-        <li>
           <a href="prestamos.php">
             <i class='bx bx-music'></i>
             <span class="links_name">Préstamos</span>
@@ -127,10 +120,10 @@
             <input type="input" name="materia">
             <br>
             <label>Hora inicial de la clase</label>
-            <input type="time" name="horainicio">
+            <input type="input" name="horaInicio" placeholder="Ejemplo: 16:00">
             <br>
             <label>Hora de fin de la clase</label>
-            <input type="time" name="horafin">
+            <input type="input" name="horaFin" placeholder="Ejemplo: 16:00">
             <br>
             <label>Aula</label>
             <input type="input" name="aula" maxlength="20">

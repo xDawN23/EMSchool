@@ -117,9 +117,9 @@ if(isset($_POST)){
         $guardar = mysqli_query($conexion, $sql);
         
         if($guardar){
-            $_SESSION['completado'] = "El registro se completó con éxito.";
+            $_SESSION['mensaje'] = "<script>alert('El usuario fue modificado ccn éxito.');</script>";
         }else{
-            $_SESSION['errores']['general'] = "Error al guardar los datos, verifique que sean correctos.";
+            $_SESSION['mensaje'] = "<script>alert('Ocurrió un error, intente de nuevo.');</script>";
         }
     }else{
         $_SESSION['errores'] = $errores;

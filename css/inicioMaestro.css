@@ -274,7 +274,7 @@ section{
   background: white; 
 } 
 .footer {
-  position: sticky;/*Con la bendita position absolute se queda hasta abajo y se queda responsiva.*/
+  position: absolute;/*Con la bendita position absolute se queda hasta abajo y se queda responsiva.*/
   left: 0;
   bottom: 0;
   width: 100%;

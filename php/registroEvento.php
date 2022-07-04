@@ -6,10 +6,6 @@
     $id_usuario = $_SESSION['codigo'];
     $id_maestro = $_POST['codigo_maestro'];
 
-    echo $codigo_evento; echo "\n";
-    echo $id_usuario; echo "\n";
-    echo $id_maestro; echo "\n";
-
     $consulta = mysqli_query($conexion, "SELECT * FROM `lista_evento` WHERE `id_alumno` LIKE '$id_usuario' AND `id_evento` LIKE '$codigo_evento'");
 
     if(mysqli_num_rows($consulta) > 0){
