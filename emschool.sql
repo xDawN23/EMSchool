@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 04, 2022 at 04:48 AM
+-- Generation Time: Jul 04, 2022 at 05:39 PM
 -- Server version: 8.0.17
 -- PHP Version: 7.3.10
 
@@ -73,6 +73,13 @@ CREATE TABLE `calificacion` (
   `mostrar_calificacion` varchar(1) NOT NULL,
   `id_calificacion` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `calificacion`
+--
+
+INSERT INTO `calificacion` (`calificacion`, `id_docente`, `grupo`, `salon`, `id_alumno`, `id_materia`, `mostrar_calificacion`, `id_calificacion`) VALUES
+('100', ' 1011', '1', 'Aula 1', '1020', '101', '1', 28);
 
 -- --------------------------------------------------------
 
@@ -177,8 +184,7 @@ CREATE TABLE `materia` (
 --
 
 INSERT INTO `materia` (`id_materia`, `id_docente`, `nombre_materia`, `hora_inicio`, `hora_fin`, `aula`, `grupo`) VALUES
-('101', '1011', 'Guitarra', '12:00', '14:00', 'Aula 1', '1'),
-('102', '1011', 'Flauta', '18:00', '20:00', 'Aula 5', '1');
+('101', '1011', 'Guitarra ', '12:00', '14:00', 'Aula 1', '1');
 
 -- --------------------------------------------------------
 
@@ -245,7 +251,8 @@ ALTER TABLE `calificacion`
   ADD KEY `calificacion` (`calificacion`),
   ADD KEY `calificacion_2` (`calificacion`),
   ADD KEY `id_calificacion` (`id_calificacion`),
-  ADD KEY `id_calificacion_2` (`id_calificacion`);
+  ADD KEY `id_calificacion_2` (`id_calificacion`),
+  ADD KEY `idCalificacion` (`id_materia`);
 
 --
 -- Indexes for table `eventos`
@@ -302,7 +309,7 @@ ALTER TABLE `alumno`
 -- AUTO_INCREMENT for table `calificacion`
 --
 ALTER TABLE `calificacion`
-  MODIFY `id_calificacion` int(1) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id_calificacion` int(1) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `eventos`
@@ -337,6 +344,12 @@ ALTER TABLE `administradores`
 --
 ALTER TABLE `alumno`
   ADD CONSTRAINT `CodigoAlumno` FOREIGN KEY (`codigo`) REFERENCES `persona` (`codigo`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `calificacion`
+--
+ALTER TABLE `calificacion`
+  ADD CONSTRAINT `idCalificacion` FOREIGN KEY (`id_materia`) REFERENCES `materia` (`id_materia`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `lista_evento`
