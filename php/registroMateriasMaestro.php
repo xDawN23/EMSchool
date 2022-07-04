@@ -119,7 +119,6 @@
               <th>Modificar evento</th>
               <th>Eliminar evento</th>
             </thead>
-
             <tbody>
               <?php $tabla = 1;
               }

@@ -23,6 +23,7 @@
     <meta name="google" value="notranslate"/>
     <title>Maestro</title>
     <link rel="stylesheet" href="../css/calificaciones.css">
+    <link rel="stylesheet" href="../css/FormAdmin.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
     <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
@@ -151,7 +152,7 @@
                         <input type="hidden" name = "codigo_materia" value =" <?php echo $id_materia ?>">
                         <input type="hidden" name = "calificacion_vieja" value =" <?php echo $calificacion ?>">
                         <input type="hidden" name = "id_calificacion" value =" <?php echo $id_calificacion ?>">
-                        <td><input type="submit" value="enviar"></td>
+                        <td><input type="submit" value="Actualizar" class="btn btn1"></td>
                       <td><?php echo $dato['calificacion']?></td>
                       </form>
                       <?php $contador++;?>

@@ -161,26 +161,56 @@
             <label>Descripción del instrumento</label>
             <input type="text" name="descripcion" maxlength="100"><br>
             <input type="submit" value="Guardar" class="btn btn1">
-          </form>
+          </form>          
         </div>
       </div>
-  
-
+      <h2>Modificación de materias</h2><br>
+      <?php $materias = mysqli_query($conexion, "SELECT * FROM materia;");
+      ?>
+      <table class="container">
+          <thead>
+            <th>Código de la materia</th>
+            <th>Código del docente encargado</th>
+            <th>Nombre de la materia</th>
+            <th>Hora de inicio y fin</th>
+            <th>Modificar</th>
+            <th>Eliminar</th>
+          </thead>
+          <tbody>
+            <?php while($resultado = mysqli_fetch_assoc($materias)){?>
+                  <tr>
+                    <td><?php echo $resultado['id_materia'];?></td>
+                    <td><?php echo $resultado['id_docente'];?></td>
+                    <td><?php echo $resultado['nombre_materia'];?></td>
+                    <td><?php echo $resultado['hora_inicio'];?> - <?php echo $resultado['hora_fin'];?></td>
+                    <form action="modificarMateria.php" method="post">
+                      <input type="hidden" name="id_materia" value="<?php echo $resultado['id_materia'];?>">
+                      <input type="hidden" name="id_docente" value="<?php echo $resultado['id_docente'];?>">
+                      <input type="hidden" name="nombre_materia" value="<?php echo $resultado['nombre_materia'];?>">
+                      <input type="hidden" name="hora_inicio" value="<?php echo $resultado['hora_inicio'];?>">
+                      <input type="hidden" name="hora_fin" value="<?php echo $resultado['hora_fin'];?>">
+                      <input type="hidden" name="aula" value="<?php echo $resultado['aula'];?>">
+                      <input type="hidden" name="grupo" value="<?php echo $resultado['grupo'];?>">
+                      <td><input type="submit" value="Modificar" class="btn btn1"></td>
+                    </form>
+                    <form action="eliminarMateria.php" method="post">
+                    <input type="hidden" name="id_materia" value="<?php echo $resultado['id_materia'];?>">
+                    <input type="hidden" name="id_docente" value="<?php echo $resultado['id_docente'];?>">
+                    <input type="hidden" name="nombre_materia" value="<?php echo $resultado['nombre_materia'];?>">
+                    <input type="hidden" name="hora_inicio" value="<?php echo $resultado['hora_inicio'];?>">
+                    <input type="hidden" name="hora_fin" value="<?php echo $resultado['hora_fin'];?>">
+                    <td><input type="submit" value="Eliminar" class="btn btn1"></td>
+                    </form>
+                  </tr>
+                  <?php }?>
+                </tbody>
+              </table>
         <div class="text">
-        <?php 
-        $valor = $_SESSION['codigo'];
-        $query = mysqli_query($conexion, "SELECT * FROM persona WHERE codigo = '$valor'"); 
-        $usuario = mysqli_fetch_assoc($query);
-        ?>
-        
         </div>
         <?php if(isset($_SESSION['mensaje'])){
           echo "<div>".$_SESSION['mensaje']."</div>";
           unset($_SESSION['mensaje']);
         }?>
-        <div class="footer">
-        <p> Todos los derechos reservados © 2021</p>
-        </div>
     </div>
 
     </div> <!--Fin del home content (pagina principal)-->

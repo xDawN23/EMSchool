@@ -30,23 +30,20 @@ echo $codigo; echo "<br>";
 
 ?>
 <form action="configurarEvento.php" method="post">
-        <label>Nombre para el evento</label>
-        <input type="input" name="id_evento" placeholder ="Nombre del evento" value = "<?php echo $nombre_evento; ?>">
-        <br>
-        <label>Descripción breve del evento</label>
-        <input type="input" name="descripcion" placeholder="Descripción del evento" value = "<?php echo $descripcion_evento; ?>">
-        <br>
-        <label>Fecha del evento</label>
-        <input type="date" name="fecha" value = "<?php echo $fecha_evento; ?>">
-        <br>
-        <label>Hora del evento</label>
-        <input type="time" name="hora" value = "<?php echo $hora_evento; ?>">
-        <br>
-        <input type="submit" value="Enviar">
-        <br><br><br>
-        <input type="hidden" name = "codigo" value =" <?php echo $codigo ?>"> 
-        </form>
-
-
+    <input type="input" name="id_evento" placeholder ="Nombre del evento" value = "<?php echo $nombre_evento; ?>">
+    <br>
+    <label>Descripción breve del evento</label>
+    <input type="input" name="descripcion" placeholder="Descripción del evento" value = "<?php echo $descripcion_evento; ?>">
+    <br>
+    <label>Fecha del evento</label>
+    <input type="date" name="fecha" value = "<?php echo $fecha_evento; ?>">
+    <br>
+    <label>Hora del evento</label>
+    <input type="time" name="hora" value = "<?php echo $hora_evento; ?>">
+    <br>
+    <input type="submit" value="Enviar">
+    <br><br><br>
+    <input type="hidden" name = "codigo" value =" <?php echo $codigo ?>"> 
+</form>
 </body>
 </html>
