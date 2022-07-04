@@ -96,6 +96,28 @@
         echo $usuario['nombre'];
         ?></div>
         
+        <h2>Datos generales del Administrador</h2>
+        <div id = "datos">
+            <table class="container">
+              <thead>
+                <th>Código</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Cargo</th>
+                <th>Estatus</th>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><?php echo $usuario['codigo'];?></td>
+                  <td><?php echo $usuario['nombre'];?></td>
+                  <td><?php echo $usuario['apellido'];?></td>
+                  <td><?php echo $usuario['cargo'];?></td>
+                  <td><?php echo $usuario['estatus'];?></td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+
         <div class="footer">
         <p> Todos los derechos reservados © 2021</p>
       </div>
