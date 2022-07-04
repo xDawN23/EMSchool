@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jun 14, 2022 at 07:58 PM
+-- Generation Time: Jul 04, 2022 at 04:48 AM
 -- Server version: 8.0.17
 -- PHP Version: 7.3.10
 
@@ -46,6 +46,17 @@ CREATE TABLE `alumno` (
   `id_db` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+--
+-- Dumping data for table `alumno`
+--
+
+INSERT INTO `alumno` (`id_alumno`, `codigo`, `prestamo`, `id_db`) VALUES
+('1020', '1020', '0', 9),
+('1021', '1021', '0', 10),
+('1022', '1022', '0', 11),
+('1023', '1023', '0', 12),
+('1024', '1024', '0', 13);
+
 -- --------------------------------------------------------
 
 --
@@ -54,6 +65,7 @@ CREATE TABLE `alumno` (
 
 CREATE TABLE `calificacion` (
   `calificacion` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `id_docente` varchar(10) NOT NULL,
   `grupo` varchar(10) NOT NULL,
   `salon` varchar(10) NOT NULL,
   `id_alumno` varchar(10) NOT NULL,
@@ -61,16 +73,6 @@ CREATE TABLE `calificacion` (
   `mostrar_calificacion` varchar(1) NOT NULL,
   `id_calificacion` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Dumping data for table `calificacion`
---
-
-INSERT INTO `calificacion` (`calificacion`, `grupo`, `salon`, `id_alumno`, `id_materia`, `mostrar_calificacion`, `id_calificacion`) VALUES
-('80', '2°', 'Aula 2', '1006', '102', '0', 14),
-('100', '1°', 'Aula 1', '1006', '101', '0', 17),
-('80', '1°', 'Aula 1', '1007', '101', '0', 19),
-('100', '2°', 'Aula 2', '1007', '102', '0', 20);
 
 -- --------------------------------------------------------
 
@@ -83,7 +85,7 @@ CREATE TABLE `eventos` (
   `descripcion` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `id_docente` varchar(10) NOT NULL,
   `fecha` date NOT NULL,
-  `hora` time NOT NULL,
+  `hora` varchar(5) NOT NULL,
   `id_evento` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -92,8 +94,7 @@ CREATE TABLE `eventos` (
 --
 
 INSERT INTO `eventos` (`nombre_evento`, `descripcion`, `id_docente`, `fecha`, `hora`, `id_evento`) VALUES
-('Presentación de piano', 'Presentación de nuestras habilidades aprendidas en este curso.', '1010', '2022-05-30', '00:00:00', 39),
-('Presentación de piano', 'Vamos a presentar a los nuevos practicantes del instrumento de flauta en el auditorio de la escuela, ¡no faltes!', '1011', '2022-06-12', '00:00:00', 41);
+('Concierto guitarra', 'Concierto para todos los estudiantes/practicantes de guitarra.', '1011', '2022-08-07', '20:00', 47);
 
 -- --------------------------------------------------------
 
@@ -117,11 +118,8 @@ CREATE TABLE `instrumento` (
 --
 
 INSERT INTO `instrumento` (`id_instrumento`, `codigo_instrumento`, `id_docente`, `id_alumno`, `nombre_instrumento`, `tipo_instrumento`, `descripcion`, `estatus_instrumento`) VALUES
-(36, '2001', NULL, NULL, 'Guitarra #1', 'Cuerda', 'Guitarra numero uno, de color negro.', 'activo'),
-(41, '2002', NULL, NULL, 'Guitarra #2', 'Cuerda', 'Guitarra numero dos, de color negro.', 'activo'),
-(42, '2003', NULL, NULL, 'Violín #1', 'Cuerda', 'Violín negro 4/4.', 'activo'),
-(43, '2004', NULL, NULL, 'Flauta #1', 'Viento', 'Flauta número uno, de color blanco, leve golpe en la lengüeta. ', 'activo'),
-(44, '2005', NULL, NULL, 'Bajo eléctrico #1', 'Electrico', 'Bajo eléctrico número uno, color negro, en buenas condiciones.', 'activo');
+(45, '2001', NULL, NULL, 'Guitarra #1', 'Cuerda', 'Guitarra de color negro, leve golpe en la parte de abajo', 'activo'),
+(46, '2002', NULL, NULL, 'Flauta #1', 'Viento', 'Flauta de color blanco, en perfectas condiciones de uso.', 'activo');
 
 -- --------------------------------------------------------
 
@@ -131,7 +129,8 @@ INSERT INTO `instrumento` (`id_instrumento`, `codigo_instrumento`, `id_docente`,
 
 CREATE TABLE `lista_evento` (
   `id_alumno` varchar(10) NOT NULL,
-  `id_evento` int(11) NOT NULL
+  `id_evento` int(11) NOT NULL,
+  `id_docente` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -141,7 +140,7 @@ CREATE TABLE `lista_evento` (
 --
 
 CREATE TABLE `maestro` (
-  `id_materia` varchar(10) NOT NULL,
+  `id_docente_db` int(11) NOT NULL,
   `id_docente` varchar(10) NOT NULL,
   `codigo` varchar(10) NOT NULL,
   `evento_creado` varchar(1) NOT NULL
@@ -151,11 +150,11 @@ CREATE TABLE `maestro` (
 -- Dumping data for table `maestro`
 --
 
-INSERT INTO `maestro` (`id_materia`, `id_docente`, `codigo`, `evento_creado`) VALUES
-('104', '1011', '1011', '1'),
-('105', '1003', '1003', '0'),
-('106', '1010', '1010', '1'),
-('107', '1011', '1011', '1');
+INSERT INTO `maestro` (`id_docente_db`, `id_docente`, `codigo`, `evento_creado`) VALUES
+(6, '1011', '1011', '0'),
+(7, '1013', '1013', '0'),
+(8, '1014', '1014', '0'),
+(9, '1015', '1015', '0');
 
 -- --------------------------------------------------------
 
@@ -167,8 +166,8 @@ CREATE TABLE `materia` (
   `id_materia` varchar(10) NOT NULL,
   `id_docente` varchar(10) NOT NULL,
   `nombre_materia` varchar(30) NOT NULL,
-  `hora_inicio` time NOT NULL,
-  `hora_fin` time NOT NULL,
+  `hora_inicio` varchar(5) NOT NULL,
+  `hora_fin` varchar(5) NOT NULL,
   `aula` varchar(10) NOT NULL,
   `grupo` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -178,10 +177,8 @@ CREATE TABLE `materia` (
 --
 
 INSERT INTO `materia` (`id_materia`, `id_docente`, `nombre_materia`, `hora_inicio`, `hora_fin`, `aula`, `grupo`) VALUES
-('104', '1011', 'Piano', '00:00:00', '00:00:00', 'Aula 6', '1'),
-('105', '1003', 'Saxofón', '00:00:00', '00:00:00', 'Aula 1', '1'),
-('106', '1010', 'Percusiones avanzadas', '00:00:00', '00:00:00', 'Aula 6', '1'),
-('107', '1011', 'Piano avanzado', '00:00:00', '00:00:00', 'Aula 5', '1');
+('101', '1011', 'Guitarra', '12:00', '14:00', 'Aula 1', '1'),
+('102', '1011', 'Flauta', '18:00', '20:00', 'Aula 5', '1');
 
 -- --------------------------------------------------------
 
@@ -196,7 +193,7 @@ CREATE TABLE `persona` (
   `telefono` varchar(10) NOT NULL,
   `correo` varchar(50) NOT NULL,
   `genero` char(1) NOT NULL,
-  `contrasena` varchar(50) NOT NULL,
+  `contrasena` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `tipo_sangre` char(3) NOT NULL,
   `cargo` varchar(20) NOT NULL,
   `estatus` varchar(10) NOT NULL
@@ -209,14 +206,17 @@ CREATE TABLE `persona` (
 INSERT INTO `persona` (`codigo`, `nombre`, `apellido`, `telefono`, `correo`, `genero`, `contrasena`, `tipo_sangre`, `cargo`, `estatus`) VALUES
 ('1000', 'André Joseph', 'López Cortez', '3231306573', 'correo@correo.com', 'M', 'andrelopez', 'O+', 'root', 'activo'),
 ('1001', 'Sergio Alejandro', 'Rodríguez Carrillo', '3781234567', 'correo@correo.com', 'F', 'sergiocarrillo', 'O+', 'root', 'activo'),
-('1003', 'Carlos Javier', 'Cruz Franco', '3789876543', 'correoasass@correo.com', 'M', 'carlos', 'O-', 'maestro', 'activo'),
-('1004', 'David Benjamín', 'Ruíz ', '3789456123', 'correodavid@correo.com', 'M', 'david', 'O+', 'admin', 'activo'),
-('1006', 'Gerardo Josué', 'Franco Becerra ', '3789876543', 'correojosue@correo.com', 'M', 'josue', 'O-', 'alumno', 'activo'),
-('1007', 'Edgar Alejandro', 'Martínez Esqueda ', '1234567890', 'correoedgar@correo.com', 'M', 'edgar', 'O+', 'alumno', 'activo'),
-('1008', 'Jonatan', 'Ramírez Jímenez', '1234567890', 'correojona@correo.com', 'M', 'jona', 'A-', 'alumno', 'activo'),
-('1009', 'Fernando', 'Cornejo Gutiérrez', '3789876543', 'correocornejo@correo.com', 'M', 'cornejo', 'A+', 'maestro', 'activo'),
-('1010', 'Roberto ', 'Jiménez Plascencia ', '3781472583', 'correoroberto@correo.com', 'M', 'roberto', 'B-', 'maestro', 'activo'),
-('1011', 'Miguel Ángel', 'Sanabria Valdez ', '3233692581', 'correosanabria@correo.com', 'M', 'miguel', 'O+', 'maestro', 'activo');
+('1004', 'David Benjamín ', 'Ruíz Avalos', '3692581470', 'correodavid@correo.com', 'M', 'fc56228704a4e815c5cd9829bf2e7414390169119931300ac90447ddc0999483', 'O+', 'admin', 'activo'),
+('1005', 'André Joseph ', 'López Cortez', '3231306573', 'andrejlc777@gmail.com', 'M', 'bfb9e1090c9f2d38adf5fbdc0aabcd27f1180b9a03172c7c85763c8afd4d229e', 'O+', 'admin', 'activo'),
+('1011', 'Carlos Javier', 'Cruz Franco', '1472583690', 'correocarlos@correo.com', 'M', '54e81770fa74dd37dc5d633a5fdabc57d6728e2f1ee8142566b4f3ccf71f998a', 'O+', 'maestro', 'activo'),
+('1013', 'Fernando', 'Cornejo Gutiérrez', '7894561230', 'correocornejo@correo.com', 'M', '6e112ac295d5c1b4899826eff00ae2645f7bc9b9d010b6243371a0ec9562e2bc', 'A+', 'maestro', 'activo'),
+('1014', 'Roberto', 'Jiménez Plascencia', '1234557989', 'correoroberto@correo.com', 'M', '852cedcff75350060f965435efc0a747bf3e1ff6aadd6596ffc4ff61100f1a06', 'AB+', 'maestro', 'activo'),
+('1015', 'Miguel Ángel ', 'Sanabria Valdez', '7894561230', 'correomiguel@correo.com', 'M', '519805e01e2671f03498e7b08ca07cd2ac858696f6b05439f567ea35bc48e0e1', 'A+', 'maestro', 'activo'),
+('1020', 'Gerardo Josué', 'Franco Becerra ', '3781234567', 'correojosue@correo.com', 'M', 'd416f45b942e2de2cb7606bf256c3c5c453ea9ee67fcd5868155a68df3c358e0', 'O+', 'alumno', 'activo'),
+('1021', 'Edgar Alejandro', 'Martínez Esqueda', '3781593577', 'correoedgar@correo.com', 'M', '6a4cd025cc4c6984804b4519740df288826defa629ccea0c9a76dcc5174e61aa', 'A+', 'alumno', 'activo'),
+('1022', 'Jonatan', 'Ramírez Jiménez', '3789876543', 'correojonatan@correo.com', 'M', '12e6b565701365c4beb76d3d5bebea523baa801c81d5a4b30729611ad39187c7', 'O+', 'alumno', 'activo'),
+('1023', 'Fernando', 'Barajas Gómez', '3781593577', 'correofernando@correo.com', 'M', '6e112ac295d5c1b4899826eff00ae2645f7bc9b9d010b6243371a0ec9562e2bc', 'O+', 'alumno', 'activo'),
+('1024', 'Marco', 'Servín De La Torre', '3781234567', 'correomarco@correo.com', 'M', '589c105235602f2b995e3051b97a23c2fbc42529fb24b156f8acd7b9951094f9', 'B+', 'alumno', 'activo');
 
 --
 -- Indexes for dumped tables
@@ -264,14 +264,14 @@ ALTER TABLE `instrumento`
 -- Indexes for table `lista_evento`
 --
 ALTER TABLE `lista_evento`
-  ADD PRIMARY KEY (`id_evento`),
-  ADD KEY `idAlumno` (`id_alumno`);
+  ADD KEY `idAlumno` (`id_alumno`),
+  ADD KEY `idEvento` (`id_evento`);
 
 --
 -- Indexes for table `maestro`
 --
 ALTER TABLE `maestro`
-  ADD PRIMARY KEY (`id_materia`),
+  ADD PRIMARY KEY (`id_docente_db`),
   ADD KEY `Docente` (`id_docente`);
 
 --
@@ -296,25 +296,31 @@ ALTER TABLE `persona`
 -- AUTO_INCREMENT for table `alumno`
 --
 ALTER TABLE `alumno`
-  MODIFY `id_db` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_db` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `calificacion`
 --
 ALTER TABLE `calificacion`
-  MODIFY `id_calificacion` int(1) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id_calificacion` int(1) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `eventos`
 --
 ALTER TABLE `eventos`
-  MODIFY `id_evento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id_evento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `instrumento`
 --
 ALTER TABLE `instrumento`
-  MODIFY `id_instrumento` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id_instrumento` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+
+--
+-- AUTO_INCREMENT for table `maestro`
+--
+ALTER TABLE `maestro`
+  MODIFY `id_docente_db` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Constraints for dumped tables
