@@ -16,7 +16,7 @@
      * Encriptamos la contraseña recibida para compararla 
      */
     $salt = 'SHIFLETT';
-    //$password_hash = hash('sha256', $salt . hash('sha256', $contrasena. $salt));
+    $password_hash = hash('sha256', $salt . hash('sha256', $contrasena. $salt));
 
 
     //Consulta para comprobar las credenciales del usuario 
@@ -30,9 +30,9 @@
       $usuario1 = mysqli_fetch_assoc($login);
       
       //Comprobar contraseña
-      // $verify = password_verify($contrasena, $usuario['contrasena']);
-      // var_dump ($verify);
-      //if($password_hash == $usuario1['contrasena'] && $codigo == $usuario1['codigo']){
+      //$verify = password_verify($contrasena, $usuario['contrasena']);
+      //var_dump ($verify);
+      if($password_hash == $usuario1['contrasena'] && $codigo == $usuario1['codigo']){
     
         if($usuario1['cargo'] == "alumno"){
           session_start();
@@ -64,7 +64,7 @@
       header('Location: login.php');
     }
     
-  //}/*Fin del método del inicio de sesión.*/
+  }/*Fin del método del inicio de sesión.*/
 
   //header('Location: login.php');
 

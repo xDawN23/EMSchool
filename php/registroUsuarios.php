@@ -117,6 +117,7 @@ if(isset($_POST)){
         $guardar_usuario = true;
         $contrasena_segura = password_hash($contrasena, PASSWORD_BCRYPT, ['cost' => 4]);
         //<!--codigo, nombre, apellido,  telefono, correo, genero, contrasena, tipo_sangre, cargo, estatus-->
+        echo $password_hash;
         $sql = "INSERT INTO persona (`codigo`, `nombre`, `apellido`, `telefono`, `correo`, `genero`, `contrasena`, `tipo_sangre`, `cargo`, `estatus`) VALUES ('$codigo', '$nombre', '$apellido', '$telefono', '$correo', '$genero', '$password_hash', '$tipo_sangre', '$cargo', '$estatus');";
 
         $guardar = mysqli_query($conexion, $sql);
@@ -139,6 +140,9 @@ if(isset($_POST)){
         
         if(!$guardar){
             $_SESSION['mensaje'] = "<script>alert('Hubo un error, intente de nuevo.');</script>";
+            header('Location: registroAdmin.php');
+        }else{
+            $_SESSION['mensaje'] = "<script>alert('El registro se completó con éxito.');</script>";
             header('Location: registroAdmin.php');
         }
     }else{

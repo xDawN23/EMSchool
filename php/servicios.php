@@ -68,13 +68,6 @@
           <span class="tooltip">Registro</span>
         </li>
         <li>
-          <a href="pagos.php">
-            <i class='bx bx-cart-alt' ></i>
-            <span class="links_name">Pagos</span>
-          </a>
-          <span class="tooltip">Pagos</span>
-        </li>
-        <li>
           <a href="servicios.php">
             <i class='bx bxs-data'></i>
             <span class="links_name">Servicios</span>
@@ -122,7 +115,7 @@
             Para el proceso de préstamo, selecciona el instrumento que necesites pedir prestado, pídelo y se descargará el archivo que necesitas presentar para llevártelo.
             Es importante que anotes los datos del instrumento, como el código, el nombre el instrumento y que esté activo, para poder llenar la solicitud debidamente.
           </p>
-          <a href="../archivos/a.pdf" download = "a.pdf">Descargar formato aquí</a>
+          <a href="../archivos/Instrumentos.docx" download = "Instrumentos.docx">Descargar formato aquí</a>
         <?php 
         $valor = $_SESSION['codigo'];
         $query = mysqli_query($conexion, "SELECT * FROM persona WHERE codigo = '$valor'"); 

@@ -68,13 +68,6 @@
           <span class="tooltip">Registro</span>
         </li>
         <li>
-          <a href="pagos.php">
-            <i class='bx bx-cart-alt' ></i>
-            <span class="links_name">Pagos</span>
-          </a>
-          <span class="tooltip">Pagos</span>
-        </li>
-        <li>
           <a href="servicios.php">
             <i class='bx bxs-data'></i>
             <span class="links_name">Servicios</span>
