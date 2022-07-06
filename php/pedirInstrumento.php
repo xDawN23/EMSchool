@@ -21,7 +21,7 @@
         $sql = "UPDATE instrumento SET estatus_instrumento = 'pendiente', id_alumno = $codigo WHERE codigo_instrumento = $codigo_instrumento;";
         $guardar = mysqli_query($conexion, $sql);
         if ($guardar) {
-            $_SESSION['mensaje'] = "<script>alert('Se ha pedido el instrumento, descargue el siguiente archivo y pida su préstamo.');</script>"; header("Location: servicios.php");
+            $_SESSION['mensaje'] = "<script>alert('Se ha pedido el instrumento. No olvide descargar el formato de préstamo.');</script>"; header("Location: servicios.php");
         } else {
             $_SESSION['mensaje'] = "<script>alert('Ocurrió un error, intente de nuevo.');</script>"; header('Location: servicios.php');
         }

@@ -24,6 +24,7 @@
     <title>Alumno</title>
     <link rel="stylesheet" href="../css/calificaciones.css">
     <link rel="stylesheet" href="../css/loader.css">
+    <link rel="stylesheet" href="../css/FormAdmin.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
     <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
@@ -120,7 +121,7 @@
         <div class="text">
           <h3>Servicios</h3>
           <p>
-            Para el proceso de préstamo, selecciona el instrumento que necesites pedir prestado, pídelo y se descargará el archivo que necesitas presentar para llevártelo.
+            Para el proceso de préstamo, selecciona el instrumento que necesites pedir prestado, anota el código del instrumento primero, después, pídelo y descarga el archivo que necesitas presentar para llevártelo.
             Es importante que anotes los datos del instrumento, como el código, el nombre el instrumento y que esté activo, para poder llenar la solicitud debidamente.
           </p>
           <a href="../archivos/Instrumentos.docx" download = "Instrumentos.docx">Descargar formato aquí</a>
@@ -131,16 +132,16 @@
         $busqueda = mysqli_query($conexion, "SELECT * FROM instrumento WHERE estatus_instrumento = 'activo'");
         ?>
         </div>
-        <?php while($dato = mysqli_fetch_array($busqueda)){ ?>
         <table class="container">
-                <thead>
-                  <th>Código del instrumento</th>
-                  <th>Nombre del instrumento</th>
-                  <th>Tipo de instrumento</th>
-                  <th>Descripción</th>
-                  <th>Estatus del instrumento</th>
-                  <th>Solicitar</th>
-                </thead>
+          <thead>
+            <th>Código del instrumento</th>
+            <th>Nombre del instrumento</th>
+            <th>Tipo de instrumento</th>
+            <th>Descripción</th>
+            <th>Estatus del instrumento</th>
+            <th>Solicitar el instrumento</th>
+          </thead>
+          <?php while($dato = mysqli_fetch_array($busqueda)){ ?>
                 <tbody>
                   <tr>
                     <td><?php echo $dato['codigo_instrumento'];?></td>
@@ -164,7 +165,7 @@
                       <input type="hidden" name = "tipo_instrumento" value =" <?php echo $tipo_instrumento ?>">
                       <input type="hidden" name = "descripcion" value =" <?php echo $descripcion ?>">
                       <input type="hidden" name = "estatus_instrumento" value =" <?php echo $estatus_instrumento ?>">
-                      <td><button type="submit" value = "enviar">Seleccionar</button></td>
+                      <td><button type="submit" value = "enviar" class="btn btn1">Seleccionar</button></td>
                       
                     </form>
                   </tr>

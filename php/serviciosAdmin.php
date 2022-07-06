@@ -181,8 +181,8 @@
             <th>Código del docente encargado</th>
             <th>Nombre de la materia</th>
             <th>Hora de inicio y fin</th>
-            <th>Modificar</th>
-            <th>Eliminar</th>
+            <th>Modificar materia</th>
+            <th>Eliminar materia</th>
           </thead>
           <tbody>
             <?php while($resultado = mysqli_fetch_assoc($materias)){?>
@@ -213,6 +213,31 @@
                   <?php }?>
                 </tbody>
               </table>
+              <!--  Tabla de instrumentos  --> 
+          <?php 
+          $instrumento = mysqli_query($conexion, "SELECT * FROM instrumento;"); ?>
+          <h2>Instrumentos registrados</h2>
+            <table class="container">
+            <thead>
+              <th>Código del instrumento</th>
+              <th>Nombre del instrumento</th>
+              <th>Tipo de instrumento</th>
+              <th>Estatus del instrumento</th>
+              <th>Descripción</th>
+            </thead>
+            <tbody>
+              <?php while($rinstrumento = mysqli_fetch_array($instrumento)){ ?>
+              <tr>
+                <td><?php echo $rinstrumento['codigo_instrumento'];?></td>
+                <td><?php echo $rinstrumento['nombre_instrumento'];?></td>
+                <td><?php echo $rinstrumento['tipo_instrumento'];?></td>
+                <td><?php echo $rinstrumento['estatus_instrumento'];?></td>
+                <td><?php echo $rinstrumento['descripcion'];?></td>
+              </tr>
+              <?php } ?>
+            </tbody>
+          </table>
+          <?php  ?>
         <div class="text">
         </div>
         <?php if(isset($_SESSION['mensaje'])){

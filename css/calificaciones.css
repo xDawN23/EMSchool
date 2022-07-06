@@ -293,10 +293,10 @@ section{
 .container{
   width: 100px;
   margin: 0 auto;
-  font-size: 25px;
+  font-size: 20px;
   text-align: left;
 	overflow: hidden;
-	width: 80%;
+	width: 95%;
 	margin: 0 auto;
   display: table;
   padding: 0 0 8em 0;

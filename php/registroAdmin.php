@@ -151,15 +151,15 @@
         </div>
 
         <div class="hijo">
-          <h3>Introduzca el código del usuario para interactuar</h3>
+          <h3>Introduzca el código del usuario para eliminar o modificar</h3>
           <form action="eliminar.php" method="post">
             <input type="text" name="cod"> <br>
-            <input type="submit" value="Eliminar usuario" name="btnBorrar" class="btn btn1">
+            <input type="submit" value="Eliminar" name="btnBorrar" class="btn btn1">
           </form>
 
           <form action="modificar.php" method="post">
             <input type="text" name="cod"> <br>
-            <input type="submit" value="Modificar datos" name="btnMod" class="btn btn1">
+            <input type="submit" value="Modificar" name="btnMod" class="btn btn1">
           </form>
         </div>
         

@@ -115,7 +115,9 @@
         </h2>
         <br>
         <?php $consulta = mysqli_query($conexion, "SELECT * FROM eventos;"); ?>
-        <?php $tabla = 0; 
+        <?php $prueba = mysqli_fetch_assoc($consulta);
+              $id_evento = $prueba['id_evento'];
+            $tabla = 0; 
             if ($tabla == 0){?>
             <table class="container">
               <thead>
@@ -150,7 +152,7 @@
                         <input type="hidden" name="id_docente" value="<?php echo $calificacion['id_docente']?>">
                         <input type="hidden" name="fecha" value="<?php echo $calificacion['fecha']?>">
                         <input type="hidden" name="hora" value="<?php echo $calificacion['hora']?>">
-                        <td><button type="submit" value="enviar">Modificar</button></td>
+                        <td><button type="submit" value="enviar" class="btn btn1">Modificar</button></td>
                       </form>
                       <form action="eliminarEvento.php" method="post">
                         <input type="hidden" name="id_evento" value="<?php echo $calificacion['nombre_evento']?>">
@@ -158,7 +160,7 @@
                         <input type="hidden" name="id_docente" value="<?php echo $calificacion['id_docente']?>">
                         <input type="hidden" name="fecha" value="<?php echo $calificacion['fecha']?>">
                         <input type="hidden" name="hora" value="<?php echo $calificacion['hora']?>">
-                        <td><button type="submit" value="enviar">Eliminar</button></td>
+                        <td><button type="submit" value="enviar" class="btn btn1">Eliminar</button></td>
                       </form>
                     </tr>
                     <?php
@@ -224,7 +226,10 @@
           </table>
           <?php } ?>
           <!--  Tabla de alumnos inscritos en los eventos  --> 
-          <?php $lista = mysqli_query($conexion, "SELECT persona.codigo, persona.nombre, persona.apellido, persona.telefono, persona.correo, lista_evento.id_alumno FROM lista_evento INNER JOIN persona ON persona.codigo = lista_evento.id_alumno;"); ?>
+          <?php $id = mysqli_query($conexion,"SELECT * FROM eventos;");
+          $rid = mysqli_fetch_assoc($id);
+          $id_evento = $rid['id_evento'];
+          $lista = mysqli_query($conexion, "SELECT persona.codigo, persona.nombre, persona.apellido, persona.telefono, persona.correo, lista_evento.id_alumno FROM lista_evento INNER JOIN persona ON persona.codigo = lista_evento.id_alumno AND lista_evento.id_docente = $valor;"); ?>
           <?php ?>
           <br><br><br>
           <h2>Alumnos registrados a los eventos</h2>

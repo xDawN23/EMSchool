@@ -34,6 +34,7 @@ body {
         .error{
           text-align: center;
           display: inline;
+          margin-left: 120px;
         }
       </style>
     <?php endif; ?>

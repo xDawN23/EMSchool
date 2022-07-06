@@ -191,9 +191,6 @@
 	</tbody>
 	</table>
           </div>
-        <div class="footer">
-        <p> Todos los derechos reservados © 2021</p>
-      </div>
       </div>
     </div>
     <!-- Fin del contenido de la página principal. -->
@@ -216,6 +213,15 @@
     sidebar.classList.toggle("active");
     }
     </script>
+
+<script>
+      window.onload = function(){
+        var contenedor = document.getElementById("contenedor_carga");
+        contenedor.style.visibility = 'hidden';
+        contenedor.style.opacity = '0';
+      }
+    </script> 
+
   <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="../js/inicioAlumno.js"></script>
 </body>
