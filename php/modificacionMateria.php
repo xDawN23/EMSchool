@@ -19,7 +19,7 @@ echo $aula; echo "<br>";
 echo $grupo; echo "<br>";
 
 
-$sql = "UPDATE `materia` SET `nombre_materia`= '$nombre_materia',`hora_inicio`= '$hora_inicio',`hora_fin`= '$hora_fin',`aula`= '$aula',`grupo`= '$grupo' WHERE id_docente = $id_docente";
+$sql = "UPDATE `materia` SET `nombre_materia`= '$nombre_materia',`hora_inicio`= '$hora_inicio',`hora_fin`= '$hora_fin',`aula`= '$aula',`grupo`= '$grupo' WHERE id_materia = $id_materia";
 
 $modificar = mysqli_query($conexion, $sql);
 
